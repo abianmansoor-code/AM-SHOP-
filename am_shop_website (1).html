@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b0b">
+  <title>AM SHOP — Premium Finds</title>
+  <style>
+    :root{--bg:#0b0b0b;--panel:#151515;--panel2:#1d1d1d;--gold:#d7b45a;--gold2:#f2d98d;--text:#f6f2e8;--muted:#aaa397;--line:#302b20}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+    button,input{font:inherit} button{cursor:pointer}
+    .topbar{background:#17140d;color:var(--gold2);text-align:center;padding:9px 14px;font-size:12px;letter-spacing:1.4px}
+    header{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1180px;margin:auto;padding:17px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{font-family:Georgia,serif;font-size:28px;letter-spacing:2px;color:var(--gold);font-weight:bold;text-decoration:none}
+    .logo span{display:block;color:#c8c1b2;font:9px Arial,sans-serif;letter-spacing:4px;text-align:center;margin-top:2px}
+    .links{display:flex;gap:27px}.links a{color:#e9e3d5;text-decoration:none;font-size:13px}.links a:hover{color:var(--gold)}
+    .nav-actions{display:flex;align-items:center;gap:10px}.menu-btn{border:1px solid var(--gold);background:transparent;color:var(--gold2);padding:10px 13px;border-radius:3px}.icon-btn{border:1px solid var(--line);background:#151515;color:var(--gold2);padding:10px 13px;border-radius:30px}
+    .cart-count{background:var(--gold);color:#111;border-radius:50%;padding:2px 6px;font-size:11px;margin-left:5px;font-weight:bold}
+    .hero{max-width:1180px;margin:0 auto;padding:55px 22px 65px;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;min-height:490px}
+    .eyebrow{color:var(--gold);letter-spacing:3px;font-size:11px;font-weight:bold}
+    h1{font:clamp(43px,6vw,76px)/1.02 Georgia,serif;margin:18px 0;color:#fff}
+    h1 em{color:var(--gold);font-style:normal}.hero p{color:var(--muted);line-height:1.8;max-width:470px;font-size:15px}
+    .btn{display:inline-block;background:var(--gold);color:#111;border:0;border-radius:3px;padding:14px 23px;text-decoration:none;font-weight:bold;font-size:12px;letter-spacing:1px;margin-top:17px}
+    .btn:hover{background:var(--gold2);transform:translateY(-1px)}
+    .hero-image{height:390px;border:1px solid #4a3c1e;position:relative;overflow:hidden;background:linear-gradient(135deg,#282216,#090909)}
+    .hero-image img{width:100%;height:100%;object-fit:cover;opacity:.78}
+    .hero-stamp{position:absolute;right:20px;bottom:20px;background:rgba(8,8,8,.86);border:1px solid var(--gold);padding:15px 18px;color:var(--gold);font:18px Georgia,serif;letter-spacing:2px}
+    .benefits{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);max-width:1180px;margin:auto;padding:21px 22px;gap:15px}
+    .benefit{text-align:center;color:#d8d0c0;font-size:12px;letter-spacing:.5px}.benefit b{display:block;color:var(--gold);font-size:19px;margin-bottom:6px}
+    section{max-width:1180px;margin:auto;padding:70px 22px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px}
+    .section-head h2{font:38px Georgia,serif;margin:8px 0 0}.section-head p{color:var(--muted);font-size:13px}
+    .tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+    .tools input{flex:1;min-width:180px;background:var(--panel);border:1px solid var(--line);color:white;padding:12px 14px;border-radius:3px;outline:none}
+    .filter{background:var(--panel);border:1px solid var(--line);color:#e9e3d5;padding:11px 14px;border-radius:3px}
+    .filter.active{background:var(--gold);color:#111;border-color:var(--gold);font-weight:bold}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .product{background:var(--panel);border:1px solid #29251c;transition:.2s;overflow:hidden}
+    .product:hover{border-color:#8d7134;transform:translateY(-3px)}
+    .product-img{height:220px;background:#202020;position:relative}
+    .product-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .tag{position:absolute;top:12px;left:12px;background:var(--gold);color:#111;padding:6px 9px;font-size:9px;letter-spacing:1px;font-weight:bold}
+    .product-info{padding:15px}.category{font-size:10px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase}
+    .product h3{font:19px Georgia,serif;margin:8px 0}.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .price{color:var(--gold2);font-weight:bold}.add{background:transparent;color:var(--gold);border:1px solid #705a2b;padding:8px 10px;font-size:11px}.add:hover{background:var(--gold);color:#111}
+    .about{background:linear-gradient(120deg,#17140e,#0d0d0d);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .about-inner{max-width:1180px;margin:auto;padding:60px 22px;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+    .about h2{font:38px Georgia,serif;margin:10px 0}.about p{color:var(--muted);line-height:1.8;font-size:14px}
+    .about-card{border:1px solid #57451f;padding:30px;text-align:center}.about-card strong{font:34px Georgia,serif;color:var(--gold)}
+    footer{max-width:1180px;margin:auto;padding:35px 22px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px}
+    .menu-backdrop{position:fixed;inset:0;background:#000b;z-index:50;opacity:0;visibility:hidden;transition:.25s}.menu-backdrop.open{opacity:1;visibility:visible}.side-menu{position:fixed;left:0;top:0;height:100%;width:min(320px,85vw);background:#111;z-index:51;padding:25px;border-right:1px solid var(--gold);transform:translateX(-105%);transition:.3s}.side-menu.open{transform:translateX(0)}.side-menu-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:18px}.side-menu-head strong{font:25px Georgia,serif;color:var(--gold)}.side-menu-close{background:none;border:0;color:var(--gold);font-size:28px;cursor:pointer}.side-menu a{display:block;color:#eee;text-decoration:none;padding:18px 8px;border-bottom:1px solid var(--line);letter-spacing:1px}.side-menu a:hover{color:var(--gold);padding-left:15px}.drawer-backdrop{position:fixed;inset:0;background:#0009;z-index:40;display:none}.drawer{position:fixed;right:0;top:0;height:100%;width:min(420px,100%);background:#111;z-index:41;padding:24px;transform:translateX(105%);transition:.25s;border-left:1px solid var(--gold)}
+    .drawer.open{transform:translateX(0)}.drawer-backdrop.open{display:block}
+    .drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:15px}
+    .drawer h2{font:27px Georgia,serif;margin:0}.close{background:none;border:0;color:var(--gold);font-size:25px}
+    #cartItems{padding:14px 0;max-height:58vh;overflow:auto}.cart-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:13px 0;font-size:13px}.cart-row small{display:block;color:var(--muted);margin-top:5px}
+    .qty button{background:#252116;border:1px solid #514222;color:var(--gold);padding:3px 8px}.total{display:flex;justify-content:space-between;color:var(--gold2);font-weight:bold;padding:15px 0}
+    .checkout{width:100%;margin-top:5px}.note{color:var(--muted);font-size:11px;line-height:1.6}
+    .empty{text-align:center;color:var(--muted);padding:35px 5px}
+    @media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr;padding-top:38px}.hero-image{height:300px}.links{display:none}.about-inner{grid-template-columns:1fr}}
+    @media(max-width:480px){.nav{padding:13px 15px}.logo{font-size:23px}.hero{padding:38px 17px 45px}.hero-image{height:245px}.benefits{padding:17px 10px}.benefit{font-size:10px}.benefit b{font-size:16px}section{padding:52px 15px}.section-head{display:block}.section-head h2{font-size:32px}.grid{gap:10px}.product-img{height:155px}.product-info{padding:11px}.product h3{font-size:16px}.product-bottom{align-items:flex-start;flex-direction:column}.add{width:100%}footer{display:block;line-height:2.2}}
+  </style>
+</head>
+<body>
+  <div class="topbar">A LITTLE LUXURY, EVERY DAY · WELCOME TO AM SHOP</div>
+  <header>
+    <nav class="nav">
+      <a class="logo" href="#">AM SHOP<span>PREMIUM FINDS</span></a>
+      <div class="links"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+      <div class="nav-actions"><button class="menu-btn" onclick="openMenu()" aria-label="Open navigation menu">☰ Menu</button><button class="icon-btn" onclick="openCart()">Bag <span class="cart-count" id="cartCount">0</span></button></div>
+    </nav>
+  </header>
+
+  <div class="menu-backdrop" id="menuBackdrop" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu" aria-label="Main navigation menu">
+    <div class="side-menu-head"><strong>AM SHOP</strong><button class="side-menu-close" onclick="closeMenu()" aria-label="Close menu">×</button></div>
+    <a href="#home" onclick="closeMenu()">⌂ &nbsp; HOME</a>
+    <a href="#shop" onclick="closeMenu()">▣ &nbsp; SHOP</a>
+    <a href="#about" onclick="closeMenu()">✦ &nbsp; ABOUT US</a>
+    <a href="#contact" onclick="closeMenu()">✉ &nbsp; CONTACT US</a>
+  </aside>
+
+  <main>
+    <div class="hero" id="home">
+      <div>
+        <div class="eyebrow">CURATED FOR YOUR EVERYDAY</div>
+        <h1>Find your<br><em>signature style.</em></h1>
+        <p>Discover thoughtful picks for your lifestyle. Explore our featured collection and find something you will love.</p>
+        <a class="btn" href="#shop">EXPLORE THE COLLECTION</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=85" alt="Modern boutique clothing store">
+        <div class="hero-stamp">AM SHOP · EST. 2026</div>
+      </div>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit"><b>✦</b>Carefully selected finds</div>
+      <div class="benefit"><b>◇</b>Simple, secure shopping</div>
+      <div class="benefit"><b>♡</b>Made for your style</div>
+    </div>
+
+    <section id="shop">
+      <div class="section-head">
+        <div><div class="eyebrow">THE COLLECTION</div><h2>Shop our favourites</h2></div>
+        <p>Fresh picks. Timeless style.</p>
+      </div>
+      <div class="tools">
+        <input id="search" type="search" placeholder="Search products..." aria-label="Search products">
+        <button class="filter active" data-category="All">All</button>
+        <button class="filter" data-category="Fashion">Fashion</button>
+        <button class="filter" data-category="Accessories">Accessories</button>
+        <button class="filter" data-category="Lifestyle">Lifestyle</button>
+      </div>
+      <div class="grid" id="productGrid"></div>
+    </section>
+
+    <div class="about" id="about">
+      <div class="about-inner">
+        <div><div class="eyebrow">THE AM SHOP PROMISE</div><h2>Good finds.<br><em style="color:var(--gold)">Great feeling.</em></h2><p>AM SHOP is a demo storefront concept built around a clean shopping experience, a premium black-and-gold look, and carefully presented products. Make it your own by adding your real products, prices, and store details.</p><a class="btn" href="#shop">DISCOVER MORE</a></div>
+        <div class="about-card"><strong>AM</strong><p style="color:var(--gold2);letter-spacing:3px">STYLE · QUALITY · YOU</p><p>Thank you for visiting our store.</p></div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="contact"><div>© 2026 AM SHOP. All rights reserved.</div><div>Contact: add-your-email@example.com · Pakistan</div><div>Instagram · Facebook · TikTok</div></footer>
+
+  <div class="drawer-backdrop" id="backdrop" onclick="closeCart()"></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart">
+    <div class="drawer-head"><h2>Your shopping bag</h2><button class="close" onclick="closeCart()" aria-label="Close cart">×</button></div>
+    <div id="cartItems"><div class="empty">Your bag is currently empty.</div></div>
+    <div class="total"><span>Subtotal</span><span id="subtotal">Rs. 0</span></div>
+    <button class="btn checkout" onclick="checkout()">CONTINUE TO CHECKOUT</button>
+    <p class="note">Demo only: checkout does not collect personal details or process real payments. Connect a trusted store platform and payment provider before accepting real orders.</p>
+  </aside>
+
+  <script>
+    const products = [
+      {id:1,name:"Classic Timepiece",category:"Accessories",price:4599,tag:"BESTSELLER",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"},
+      {id:2,name:"Everyday Sneakers",category:"Fashion",price:6299,tag:"NEW",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"},
+      {id:3,name:"Minimal Leather Bag",category:"Accessories",price:3899,tag:"POPULAR",image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80"},
+      {id:4,name:"Modern Sunglasses",category:"Accessories",price:2199,tag:"",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"},
+      {id:5,name:"Casual Streetwear",category:"Fashion",price:3499,tag:"FEATURED",image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=80"},
+      {id:6,name:"Daily Carry Bottle",category:"Lifestyle",price:1299,tag:"",image:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=80"},
+      {id:7,name:"Essential Backpack",category:"Lifestyle",price:2799,tag:"",image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80"},
+      {id:8,name:"Premium Trainers",category:"Fashion",price:5799,tag:"",image:"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=700&q=80"}
+    ];
+    // Replace any demo image URL with your own product photo before publishing.
+    products[1].image = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80";
+    products[7].image = "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=700&q=80";
+    let cart = {};
+    let category = "All";
+    const money = n => "Rs. " + n.toLocaleString("en-PK");
+    function renderProducts(){
+      const term = document.getElementById("search").value.toLowerCase();
+      const shown = products.filter(p => (category==="All" || p.category===category) && p.name.toLowerCase().includes(term));
+      document.getElementById("productGrid").innerHTML = shown.length ? shown.map(p=>`
+        <article class="product">
+          <div class="product-img"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/700x700/171717/d7b45a?text=AM+SHOP'">${p.tag?`<span class="tag">${p.tag}</span>`:""}</div>
+          <div class="product-info"><div class="category">${p.category}</div><h3>${p.name}</h3><div class="product-bottom"><span class="price">${money(p.price)}</span><button class="add" onclick="addToCart(${p.id})">ADD TO BAG +</button></div></div>
+        </article>`).join("") : '<p class="empty">No products found. Try another search.</p>';
+    }
+    function openMenu(){document.getElementById("sideMenu").classList.add("open");document.getElementById("menuBackdrop").classList.add("open")}
+    function closeMenu(){document.getElementById("sideMenu").classList.remove("open");document.getElementById("menuBackdrop").classList.remove("open")}
+    function addToCart(id){cart[id]=(cart[id]||0)+1;updateCart();openCart()}
+    function updateCart(){
+      const count=Object.values(cart).reduce((a,b)=>a+b,0);
+      document.getElementById("cartCount").textContent=count;
+      const entries=Object.entries(cart);
+      document.getElementById("cartItems").innerHTML=entries.length?entries.map(([id,qty])=>{
+        const p=products.find(x=>x.id===Number(id));
+        return `<div class="cart-row"><div><strong>${p.name}</strong><small>${money(p.price)} each</small></div><div class="qty"><button onclick="changeQty(${id},-1)">−</button> ${qty} <button onclick="changeQty(${id},1)">+</button></div></div>`;
+      }).join(""):'<div class="empty">Your bag is currently empty.</div>';
+      const total=entries.reduce((sum,[id,qty])=>sum+products.find(p=>p.id===Number(id)).price*qty,0);
+      document.getElementById("subtotal").textContent=money(total);
+    }
+    function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];updateCart()}
+    function openCart(){document.getElementById("drawer").classList.add("open");document.getElementById("backdrop").classList.add("open")}
+    function closeCart(){document.getElementById("drawer").classList.remove("open");document.getElementById("backdrop").classList.remove("open")}
+    function checkout(){alert("Thanks for trying AM SHOP! This is a demo checkout. Real orders and payments are not enabled yet.")}
+    document.getElementById("search").addEventListener("input",renderProducts);
+    document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{document.querySelector(".filter.active").classList.remove("active");b.classList.add("active");category=b.dataset.category;renderProducts()}));
+    renderProducts();updateCart();
+  </script>
+</body>
+</html>
